@@ -21,8 +21,8 @@ A Python-based game data logging system designed for capturing comprehensive pla
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ChanNEthanOS/COD-Logger.git
-cd COD-Logger
+git clone https://github.com/Ethandler/CallOfWarLogger.git
+cd CallOfWarLogger
 ```
 
 2. Install dependencies:
