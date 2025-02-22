@@ -9,6 +9,7 @@ import logging
 import os
 import sys
 import platform
+import ctypes
 
 # Set up detailed logging
 logging.basicConfig(
@@ -33,15 +34,24 @@ class GameLogger:
 
     def _log_system_info(self):
         """Log system information for debugging purposes."""
-        logging.info(f"Operating System: {sys.platform}")
+        logging.info(f"Operating System: {platform.system()} {platform.release()}")
         logging.info(f"Python Version: {sys.version}")
+
         if platform.system() == 'Windows':
             try:
-                import ctypes
-                is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
-                logging.info(f"Running with Administrator privileges: {bool(is_admin)}")
+                # Properly handle Windows admin check
+                def is_admin():
+                    try:
+                        return ctypes.windll.shell32.IsUserAnAdmin()
+                    except AttributeError:
+                        return False
+
+                admin_status = is_admin()
+                logging.info(f"Running with Administrator privileges: {bool(admin_status)}")
             except Exception as e:
                 logging.warning(f"Could not check administrator privileges: {str(e)}")
+        else:
+            logging.info("Running on non-Windows system")
 
     @performance_monitor
     def start_logging(self):
