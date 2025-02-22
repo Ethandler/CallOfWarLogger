@@ -1785,3 +1785,54 @@
 2025-02-22 06:24:16,519 - INFO - [game_logger.py:204] - Zombies - Total: 24, Alive: 20, Killed: 0
 2025-02-22 06:24:16,519 - INFO - [game_logger.py:205] - Player Health: 100
 2025-02-22 06:24:16,519 - INFO - [game_logger.py:206] - Current Weapon: MP40
+2025-02-22 00:28:59,398 - INFO - [input_tracker.py:28] - Running with administrator privileges
+2025-02-22 00:28:59,398 - INFO - [ml_trainer.py:14] - GameplayLearner initialized
+2025-02-22 00:28:59,398 - INFO - [game_logger.py:41] - Operating System: Windows 11
+2025-02-22 00:28:59,398 - INFO - [game_logger.py:42] - Python Version: 3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]
+2025-02-22 00:28:59,399 - INFO - [game_logger.py:54] - Running with Administrator privileges: True
+2025-02-22 00:28:59,399 - INFO - [game_logger.py:70] - === Starting Game Logging Session ===
+2025-02-22 00:28:59,399 - INFO - [game_logger.py:71] - Session start time: 2025-02-22 00:28:59.399319
+2025-02-22 00:28:59,505 - INFO - [input_tracker.py:55] - Keyboard tracking initialized successfully
+2025-02-22 00:28:59,506 - ERROR - [input_tracker.py:66] - Failed to initialize input tracking: module 'mouse' has no attribute 'on_move'
+2025-02-22 00:28:59,523 - INFO - [game_logger.py:84] - To enable full functionality, run 'run_logger.bat' as administrator
+2025-02-22 00:29:16,270 - INFO - [game_logger.py:202] - === Statistics Update ===
+2025-02-22 00:29:16,270 - INFO - [game_logger.py:203] - Round: 1
+2025-02-22 00:29:16,270 - INFO - [game_logger.py:204] - Zombies - Total: 24, Alive: 20, Killed: 0
+2025-02-22 00:29:16,271 - INFO - [game_logger.py:205] - Player Health: 100
+2025-02-22 00:29:16,271 - INFO - [game_logger.py:206] - Current Weapon: MP40
+2025-02-22 00:29:33,070 - INFO - [game_logger.py:202] - === Statistics Update ===
+2025-02-22 00:29:33,070 - INFO - [game_logger.py:203] - Round: 1
+2025-02-22 00:29:33,070 - INFO - [game_logger.py:204] - Zombies - Total: 24, Alive: 20, Killed: 0
+2025-02-22 00:29:33,070 - INFO - [game_logger.py:205] - Player Health: 100
+2025-02-22 00:29:33,070 - INFO - [game_logger.py:206] - Current Weapon: MP40
+2025-02-22 00:29:52,076 - INFO - [game_logger.py:202] - === Statistics Update ===
+2025-02-22 00:29:52,077 - INFO - [game_logger.py:203] - Round: 1
+2025-02-22 00:29:52,078 - INFO - [game_logger.py:204] - Zombies - Total: 24, Alive: 20, Killed: 0
+2025-02-22 00:29:52,078 - INFO - [game_logger.py:205] - Player Health: 100
+2025-02-22 00:29:52,079 - INFO - [game_logger.py:206] - Current Weapon: MP40
+2025-02-22 00:30:07,228 - WARNING - [utils.py:22] - Performance warning in get_game_state: Execution time: 30.79ms, Memory delta: 0.00MB
+2025-02-22 00:32:29,297 - INFO - [input_tracker.py:28] - Running with administrator privileges
+2025-02-22 00:32:29,297 - INFO - [ml_trainer.py:14] - GameplayLearner initialized
+2025-02-22 00:32:29,297 - INFO - [game_logger.py:41] - Operating System: Windows 11
+2025-02-22 00:32:29,297 - INFO - [game_logger.py:42] - Python Version: 3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]
+2025-02-22 00:32:29,298 - INFO - [game_logger.py:54] - Running with Administrator privileges: True
+2025-02-22 00:32:29,298 - INFO - [game_logger.py:70] - === Starting Game Logging Session ===
+2025-02-22 00:32:29,298 - INFO - [game_logger.py:71] - Session start time: 2025-02-22 00:32:29.298307
+2025-02-22 00:32:29,402 - INFO - [input_tracker.py:55] - Keyboard tracking initialized successfully
+2025-02-22 00:32:29,403 - ERROR - [input_tracker.py:66] - Failed to initialize input tracking: module 'mouse' has no attribute 'on_move'
+2025-02-22 00:32:29,406 - INFO - [game_logger.py:84] - To enable full functionality, run 'run_logger.bat' as administrator
+2025-02-22 00:32:46,131 - INFO - [game_logger.py:202] - === Statistics Update ===
+2025-02-22 00:32:46,132 - INFO - [game_logger.py:203] - Round: 1
+2025-02-22 00:32:46,132 - INFO - [game_logger.py:204] - Zombies - Total: 24, Alive: 20, Killed: 0
+2025-02-22 00:32:46,132 - INFO - [game_logger.py:205] - Player Health: 100
+2025-02-22 00:32:46,132 - INFO - [game_logger.py:206] - Current Weapon: MP40
+2025-02-22 00:33:02,912 - INFO - [game_logger.py:202] - === Statistics Update ===
+2025-02-22 00:33:02,913 - INFO - [game_logger.py:203] - Round: 1
+2025-02-22 00:33:02,913 - INFO - [game_logger.py:204] - Zombies - Total: 24, Alive: 20, Killed: 0
+2025-02-22 00:33:02,913 - INFO - [game_logger.py:205] - Player Health: 100
+2025-02-22 00:33:02,913 - INFO - [game_logger.py:206] - Current Weapon: MP40
+2025-02-22 00:33:19,632 - INFO - [game_logger.py:202] - === Statistics Update ===
+2025-02-22 00:33:19,632 - INFO - [game_logger.py:203] - Round: 1
+2025-02-22 00:33:19,632 - INFO - [game_logger.py:204] - Zombies - Total: 24, Alive: 20, Killed: 0
+2025-02-22 00:33:19,632 - INFO - [game_logger.py:205] - Player Health: 100
+2025-02-22 00:33:19,633 - INFO - [game_logger.py:206] - Current Weapon: MP40
