@@ -7,7 +7,10 @@ dependencies = [
     "flask-login>=0.6.3",
     "keyboard>=0.13.5",
     "mouse>=0.7.1",
+    "numpy>=2.2.3",
     "oauthlib>=3.2.2",
+    "pandas>=2.2.3",
     "psutil>=7.0.0",
     "trafilatura>=2.0.0",
+    "twilio>=9.4.6",
 ]

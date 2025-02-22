@@ -4,6 +4,7 @@ import time
 from datetime import datetime
 from input_tracker import InputTracker
 from data_collector import DataCollector
+from ml_trainer import GameplayLearner
 from utils import performance_monitor
 import logging
 import os
@@ -25,9 +26,12 @@ class GameLogger:
     def __init__(self):
         self.input_tracker = InputTracker()
         self.data_collector = DataCollector()
+        self.gameplay_learner = GameplayLearner()
         self.is_running = False
         self.session_start = None
         self.current_log = []
+        self.last_analysis_time = time.time()
+        self.analysis_interval = 300  # Analyze every 5 minutes
 
         # Log system info for debugging
         self._log_system_info()
@@ -48,6 +52,10 @@ class GameLogger:
 
                 admin_status = is_admin()
                 logging.info(f"Running with Administrator privileges: {bool(admin_status)}")
+
+                if not admin_status:
+                    logging.warning("⚠️ Administrator privileges required for full functionality")
+                    logging.info("Please run run_logger.bat as administrator")
             except Exception as e:
                 logging.warning(f"Could not check administrator privileges: {str(e)}")
         else:
@@ -67,14 +75,15 @@ class GameLogger:
                 os.makedirs('game_logs')
                 logging.info("Created game_logs directory")
 
-            # Start input tracking (will run in limited mode if no root privileges)
+            # Start input tracking (will run in limited mode if no admin privileges)
             self.input_tracker.start()
 
             if not self.input_tracker.input_tracking_available:
-                logging.warning("⚠️ Running with limited functionality - input tracking disabled")
                 if platform.system() == 'Windows':
+                    logging.warning("⚠️ Running with limited functionality - administrator privileges required")
                     logging.info("To enable full functionality, run 'run_logger.bat' as administrator")
                 else:
+                    logging.warning("⚠️ Running with limited functionality - input tracking disabled")
                     logging.info("To enable full functionality, run the script with root privileges")
             else:
                 logging.info("✅ Input tracking successfully initialized")
@@ -134,6 +143,12 @@ class GameLogger:
                     self.current_log = []
                     last_save_time = time.time()
 
+                # Periodic gameplay analysis
+                current_time = time.time()
+                if current_time - self.last_analysis_time > self.analysis_interval:
+                    self._analyze_gameplay()
+                    self.last_analysis_time = current_time
+
                 # Log statistics every 1000 iterations
                 loop_iterations += 1
                 if loop_iterations % 1000 == 0:
@@ -145,6 +160,40 @@ class GameLogger:
                 logging.error(f"Error in main loop: {str(e)}", exc_info=True)
                 if not self.is_running:
                     break
+
+    def _analyze_gameplay(self):
+        """Analyze gameplay data and generate insights."""
+        try:
+            logging.info("=== Starting Gameplay Analysis ===")
+            analysis_results = self.gameplay_learner.analyze_gameplay()
+            if analysis_results:
+                recommendations = self.gameplay_learner.generate_recommendations(analysis_results)
+
+                logging.info("=== Gameplay Analysis Results ===")
+                logging.info(f"Movement Style: {analysis_results['movement_style']}")
+                logging.info(f"Combat Effectiveness: {json.dumps(analysis_results['combat_effectiveness'], indent=2)}")
+                logging.info(f"Resource Efficiency: {analysis_results['resource_efficiency']:.2f}")
+                logging.info(f"Tactical Profile: {json.dumps(analysis_results['tactical_profile'], indent=2)}")
+
+                logging.info("=== Gameplay Recommendations ===")
+                for idx, rec in enumerate(recommendations, 1):
+                    logging.info(f"{idx}. {rec}")
+
+                # Save analysis results
+                analysis_file = f"game_logs/analysis_{self.session_start.strftime('%Y%m%d_%H%M%S')}.json"
+                with open(analysis_file, 'w') as f:
+                    json.dump({
+                        'timestamp': time.time(),
+                        'analysis': analysis_results,
+                        'recommendations': recommendations
+                    }, f, indent=2)
+
+                logging.info(f"Analysis results saved to {analysis_file}")
+            else:
+                logging.warning("No analysis results available - insufficient data")
+
+        except Exception as e:
+            logging.error(f"Error during gameplay analysis: {str(e)}", exc_info=True)
 
     def _log_statistics(self, game_state):
         """Log periodic statistics about the game state."""

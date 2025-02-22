@@ -47,7 +47,9 @@ class DataCollector:
                     "last_reload_time": current_time,
                     "shots_fired": 0,
                     "hits": 0,
-                    "accuracy": 0.0
+                    "accuracy": 0.0,
+                    "recoil_control": 0.0,  # Added for ML analysis
+                    "target_acquisition_time": 0.0  # Added for ML analysis
                 },
                 "perks": {
                     "juggernog": False,
@@ -58,7 +60,15 @@ class DataCollector:
                 "points": 500,
                 "behavior": {
                     "current": self.current_behavior,
-                    "duration": behavior_duration
+                    "duration": behavior_duration,
+                    "style_score": 0.0,  # Added for ML analysis
+                    "efficiency_rating": 0.0  # Added for ML analysis
+                },
+                "performance_metrics": {  # Added for ML analysis
+                    "average_accuracy": 0.0,
+                    "survival_time": 0.0,
+                    "points_per_minute": 0.0,
+                    "kills_per_minute": 0.0
                 }
             },
             "game": {
@@ -68,11 +78,14 @@ class DataCollector:
                     "total": 24,
                     "alive": 20,
                     "spawned": 4,
-                    "killed": 0
+                    "killed": 0,
+                    "spawn_patterns": [],  # Added for ML analysis
+                    "threat_levels": []  # Added for ML analysis
                 },
                 "power_ups": {
-                    "active": None,  # Can be: "insta_kill", "double_points", "max_ammo", "nuke"
-                    "time_remaining": 0
+                    "active": None,
+                    "time_remaining": 0,
+                    "efficiency_rating": 0.0  # Added for ML analysis
                 },
                 "score": 0,
                 "outcomes": {
@@ -80,7 +93,9 @@ class DataCollector:
                     "headshots": 0,
                     "damage_dealt": 0,
                     "deaths": 0,
-                    "revives": 0
+                    "revives": 0,
+                    "survival_rounds": [],  # Added for ML analysis
+                    "achievement_progress": {}  # Added for ML analysis
                 }
             },
             "environment": {
@@ -95,14 +110,25 @@ class DataCollector:
                         {"id": "door_1", "cost": 750},
                         {"id": "door_2", "cost": 1000}
                     ]
-                }
+                },
+                "danger_zones": [],  # Added for ML analysis
+                "safe_zones": [],  # Added for ML analysis
+                "resource_hotspots": []  # Added for ML analysis
             },
             "actions": {
                 "last_action": self.last_action,
                 "tactical": {
                     "peeking": False,
                     "sprinting": False,
-                    "crouching": False
+                    "crouching": False,
+                    "decision_quality": 0.0,  # Added for ML analysis
+                    "reaction_time": 0.0  # Added for ML analysis
+                },
+                "strategy_metrics": {  # Added for ML analysis
+                    "positioning_score": 0.0,
+                    "resource_management": 0.0,
+                    "team_coordination": 0.0,
+                    "objective_focus": 0.0
                 }
             }
         }
